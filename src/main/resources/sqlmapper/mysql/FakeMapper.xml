@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fake">
+     <!-- class = fake>
+     내부적으로는 Map selectByUID(HashMap map) {
+
+     } 으로 바뀌어 동작함 -->
+	<select id="selectByUID" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM db_cars.factorys
+        WHERE COMPANY_ID = #{comanyId}
+	</select>
+</mapper>
+
+
+<!-- xml로 기술하지만 내부적으로는 mybatis가 메서드를 호출하는 것이다.
+Map이라는 파라미터가 들어오면 #(comanyId) 변수를 key로 생각하고 key에 해당하는 값을 찾는다. -->
+<!-- xml을 호출하는 것은 mybatis. mybatis에서 xml을 호출할 수 있는 것이 이미 정의되어 있어서 그대로 사용하면 된다. -->
+<!-- 하나의 업무가 작동하려면 controller, service, Dao, xml 4개가 있어야 작동이 됨 -->

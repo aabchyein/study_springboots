@@ -81,6 +81,18 @@ public class HelloWorldController {
         
         return ResponseEntity.ok().body(arrayList);
     }
+
+    // /helloWorldResponseFake/C001
+    @GetMapping("/helloWorldResponseFake/{currentPage}")
+    public ResponseEntity<Object> helloWorldResponseFake(@PathVariable String companyId){   //@PathVariable 이것을 붙이지 않으면 그냥 parameter로 넘어온 변수로 생각함. 이것을 넣어줘야 {} 안의 위치에 있는 값이라는 것을 스프링에 알려주는 것이다.
+        ArrayList arrayList = new ArrayList<>();
+        arrayList.add(companyId);
+        helloWorldService.fakeSelect(companyId);  //service로 이동
+        
+        return ResponseEntity.ok().body(arrayList);
+    }
+
+    
 }
 
 
