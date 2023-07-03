@@ -16,7 +16,7 @@ public class SharedDao {
     }
 
     // 레코드 하나를 가져올 때 사용하는 메서드
-    public Object getOne(String sqlMapId, Object dataMap) {
+    public Object getOne(String sqlMapId, Object dataMap) {  // 이 메서드의 return값이 object
         Object result = sqlSessionTemplate.selectOne(sqlMapId, dataMap);
         return result;
     }

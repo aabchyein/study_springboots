@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.study_springboots.service.HelloWorldService;
 
-@Controller
+@Controller  // 실제로는 RestController라는 이름이 정확함.
 public class HelloWorldController {
     @Autowired        // AutoWired는 new라고 생각하면 된다. 스프링프레임워크의 가장 중요한 기능 중의 하나인 DI 기능. 스프링부트가 뜨면서 캡 씌운 부분을 메모리에 전부 올려놓는다. 초기화 뜰 때는 시간이 걸리지만 사용할 때 속도는 증가한다.(메모리에 올라가 있는 상태이므로)
     HelloWorldService helloWorldService;
