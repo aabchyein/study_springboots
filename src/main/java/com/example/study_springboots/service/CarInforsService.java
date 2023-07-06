@@ -15,6 +15,15 @@ public class CarInforsService {
     @Autowired  // spring DI에서 사용되는 annotation(annotation:주석처럼 쓰여서 특별한 의미, 기능을 수행하도록 하는 기술)
     SharedDao sharedDao; // DI
 
+    // foreach HashMap.put("CAR_INFOR_ID_LIST", CAR_INFOR_ID_LIST)
+    public Object selectInUID(Map dataMap) {  // 데이터를 가공할 거면 MAP, 바로 보낼거면 object로 받는 것이 좋다
+        // Object getOne(String sqlMapId, Object dataMap)
+        String sqlMapId = "CarInfors.selectInUID";
+
+        Object result = sharedDao.getList(sqlMapId, dataMap);
+        return result;
+    }
+
     // 검색(search의 조건 : YEAR, CAR_NAME)
     public Object selectSearch(String search, String words) {
         // Object getList(String sqlMapId, Object dataMap) 이 형식에 맞춰서 parameter를 써줘야 한다.

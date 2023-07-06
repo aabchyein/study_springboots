@@ -1,24 +1,40 @@
-package com.example.study_springboots.restapis;
+package com.example.study_springboots.controller;
 
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.study_springboots.service.CarInforsService;
 
-@RestController
+@Controller
+@RequestMapping("/carInfor")
 public class CarInforsController {
     @Autowired   // 스프링이 이미 클래스를 인스턴스했기 때문에 그냥 선언해서 갖다 쓴다는 의미의 캡
     CarInforsService carInforsService;
+
+    // foreach
+    @GetMapping("/selectInUID")
+    public ResponseEntity selectInUID(@RequestBody Map paramMap) {  // reauestbody: 사용자가 요청을 보낼 때 body에 데이터를 넣어서 보내야 한다는 것.
+        Object result = null;
+        try {
+            result = carInforsService.selectInUID(paramMap);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(result);
+
+        }
+        return ResponseEntity.ok().body(result);
+    }
 
     // /selectSearch/YEAR/2020
     // /selectSearch/CAR_NAME/소
